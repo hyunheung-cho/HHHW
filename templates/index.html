@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Random Photo Generator</title>
+    <style>
+        .container {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: rgb(21, 21, 21);
+            color: #f8f8f8;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 0.5em;
+            color: #F5AB35; /* Orange */
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 1em;
+            color: #6EB5FF; /* Light Blue */
+        }
+        img {
+            max-width: 100%;
+            max-height: 400px;
+        }
+        .foodName {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            color: #A3A1FB; /* Lavender */
+        }
+        button {
+            background-color: #f1c40f;
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin-bottom: 1em;
+            border: none;
+            cursor: pointer;
+        }
+        .image-container {
+            min-height: 470px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .food-name-container {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What to Eat</h1>
+        <h2>Let's figure out what to eat!</h2>
+        <div class="image-container">
+        <img id="randomImage" src="" alt="Random Food">
+        <div class="food-name-container">
+            <p id="foodName"></p>
+        </div>
+    </div>
+    <button onclick="getRandomImage()">What should I eat?</button>
+</div> <!-- Closing the .image-container div -->
+</div> <!-- Closing the .container div -->
+    <script>
+        async function getRandomImage() {
+            const response = await fetch('/get_random_image');
+            const image = await response.json();
+            document.getElementById('randomImage').src = image.url;
+            document.getElementById('foodName').textContent = image.name;
+        }
+        
+        // Load initial image
+        getRandomImage();
+    </script>
+</body>
+</html>
