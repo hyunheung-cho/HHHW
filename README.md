@@ -1,5 +1,4 @@
-# HHHW
-## HHHW Project
+# HHHW Project
 
 Welcome to our small business that is dedicated to creating a positive impact on the local community. We are passionate about supporting local businesses and bringing people together through food.
 
